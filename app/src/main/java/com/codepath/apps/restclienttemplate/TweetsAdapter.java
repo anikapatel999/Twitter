@@ -15,7 +15,7 @@ import com.codepath.apps.restclienttemplate.models.Tweet;
 
 import java.util.List;
 
-public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder>{
+public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder> {
     Context context;
     List<Tweet> tweets;
 
@@ -42,6 +42,18 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         holder.bind(tweet);
     }
 
+    // Clean all elements of the recycler
+    public void clear() {
+        tweets.clear(); //SHOULD THIS BE TWEETS?
+        notifyDataSetChanged();
+    }
+
+    // Add a list of items -- change to type used
+    public void addAll(List<Tweet> list) {
+        tweets.addAll(list); //SHOULD THIS BE TWEETS?
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getItemCount() {
         return tweets.size();
@@ -53,12 +65,14 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         ImageView ivProfileImage;
         TextView tvBody;
         TextView tvScreenName;
+        ImageView ivTweetImage;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ivProfileImage = itemView.findViewById(R.id.ivProfileImage);
             tvBody = itemView.findViewById(R.id.tvBody);
             tvScreenName = itemView.findViewById(R.id.tvScreenName);
+            ivTweetImage = itemView.findViewById(R.id.ivTweetImage);
 
         }
 
@@ -66,6 +80,13 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             tvBody.setText(tweet.body);
             tvScreenName.setText(tweet.user.screenName);
             Glide.with(context).load(tweet.user.profileImageUrl).into(ivProfileImage);
+            if (tweet.tweetImageUrl != null) {
+                ivTweetImage.setVisibility(View.VISIBLE);
+                Glide.with(context).load(tweet.tweetImageUrl).into(ivTweetImage);
+            }
+            else {
+                ivTweetImage.setVisibility(View.GONE);
+            }
         }
     }
 }

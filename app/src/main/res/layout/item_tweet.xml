@@ -30,4 +30,15 @@
         android:layout_marginTop="2dp"
         android:layout_toEndOf="@+id/ivProfileImage"
         tools:text="Hello! This is my tweet!" />
+
+    <ImageView
+        android:id="@+id/ivTweetImage"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvBody"
+        android:layout_marginTop="5dp"
+        android:layout_centerInParent="true"
+        tools:srcCompat="@tools:sample/avatars"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"/>
 </RelativeLayout>
