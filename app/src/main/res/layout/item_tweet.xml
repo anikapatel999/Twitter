@@ -29,16 +29,31 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="2dp"
         android:layout_toEndOf="@+id/ivProfileImage"
+        android:autoLink="all"
+        android:linksClickable="true"
         tools:text="Hello! This is my tweet!" />
 
-    <ImageView
-        android:id="@+id/ivTweetImage"
-        android:layout_width="300dp"
+    <androidx.cardview.widget.CardView
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvBody"
         android:layout_marginTop="5dp"
+        app:cardCornerRadius="10dp"
         android:layout_centerInParent="true"
         tools:srcCompat="@tools:sample/avatars"
         android:adjustViewBounds="true"
-        android:scaleType="fitXY"/>
+        android:scaleType="fitXY">
+
+        <ImageView
+            android:id="@+id/ivTweetImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvBody"
+            android:layout_marginTop="0dp"
+            android:layout_centerInParent="true"
+            tools:srcCompat="@tools:sample/avatars"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"/>
+
+    </androidx.cardview.widget.CardView>
 </RelativeLayout>
