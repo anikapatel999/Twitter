@@ -19,6 +19,7 @@
         android:layout_marginStart="5dp"
         android:layout_toEndOf="@+id/ivProfileImage"
         android:text="TextView"
+        android:textStyle="bold"
         tools:text="AnikaPatel" />
 
     <TextView
@@ -32,6 +33,16 @@
         android:autoLink="all"
         android:linksClickable="true"
         tools:text="Hello! This is my tweet!" />
+
+    <TextView
+        android:id="@+id/tvTimestamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tvBody"
+        android:layout_marginStart="5dp"
+        android:layout_toEndOf="@+id/tvScreenName"
+        android:text="TextView"
+        tools:text="3d" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="280dp"
@@ -56,4 +67,5 @@
             android:scaleType="fitXY"/>
 
     </androidx.cardview.widget.CardView>
+
 </RelativeLayout>
