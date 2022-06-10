@@ -1,11 +1,14 @@
 package com.codepath.apps.restclienttemplate;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -72,6 +75,8 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         TextView tvScreenName;
         ImageView ivTweetImage;
         TextView tvTimestamp;
+        ProgressBar pbLoading;
+        // Button btnReply;
         private static final int SECOND_MILLIS = 1000;
         private static final int MINUTE_MILLIS = 60 * SECOND_MILLIS;
         private static final int HOUR_MILLIS = 60 * MINUTE_MILLIS;
@@ -83,7 +88,9 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             tvBody = itemView.findViewById(R.id.tvBody);
             tvScreenName = itemView.findViewById(R.id.tvScreenName);
             ivTweetImage = itemView.findViewById(R.id.ivTweetImage);
-            tvTimestamp = itemView.findViewById(R.id.tvTimestamp); //HERE
+            tvTimestamp = itemView.findViewById(R.id.tvTimestamp);
+            pbLoading = itemView.findViewById(R.id.pbLoading);
+            // btnReply = itemView.findViewById(R.id.btnReply);
 
         }
         public String getRelativeTimeAgo(String rawJsonDate) {
@@ -120,13 +127,13 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         }
 
         public void bind(Tweet tweet) {
+            // on some click or some loading we need to wait for...
+            pbLoading.setVisibility(ProgressBar.VISIBLE);
+
             tvBody.setText(tweet.body);
             tvScreenName.setText(tweet.user.screenName);
-            // ---- HERE ----
-            // String timestamp = tweet.createdAt;
             String timestamp = getRelativeTimeAgo(tweet.createdAt);
             tvTimestamp.setText(timestamp);
-            // ---- HERE ----
             Glide.with(context).load(tweet.user.profileImageUrl).circleCrop().into(ivProfileImage);
             if (tweet.tweetImageUrl != null) {
                 ivTweetImage.setVisibility(View.VISIBLE);
@@ -135,6 +142,18 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             else {
                 ivTweetImage.setVisibility(View.GONE);
             }
+            // run a background job and once complete
+            pbLoading.setVisibility(ProgressBar.INVISIBLE);
+
+            // Set click listener on button
+//            btnReply.setOnClickListener(new View.OnClickListener() {
+//                // --THIS--
+//                @Override
+//                public void onClick(View view) {
+//                    Intent intent = new Intent(context, ComposeActivity.class);
+//
+//                }
+//            });
         }
     }
 }

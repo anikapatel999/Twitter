@@ -12,6 +12,12 @@
         android:layout_height="50dp"
         tools:srcCompat="@tools:sample/avatars" />
 
+    <ProgressBar
+        android:id="@+id/pbLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible" />
+
     <TextView
         android:id="@+id/tvScreenName"
         android:layout_width="wrap_content"
@@ -45,27 +51,29 @@
         tools:text="3d" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cvImage"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvBody"
-        android:layout_marginTop="5dp"
-        app:cardCornerRadius="10dp"
         android:layout_centerInParent="true"
-        tools:srcCompat="@tools:sample/avatars"
+        android:layout_marginTop="5dp"
         android:adjustViewBounds="true"
-        android:scaleType="fitXY">
+        android:scaleType="fitXY"
+        app:cardCornerRadius="10dp"
+        tools:srcCompat="@tools:sample/avatars">
 
         <ImageView
             android:id="@+id/ivTweetImage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvBody"
-            android:layout_marginTop="0dp"
             android:layout_centerInParent="true"
-            tools:srcCompat="@tools:sample/avatars"
+            android:layout_marginTop="0dp"
             android:adjustViewBounds="true"
-            android:scaleType="fitXY"/>
+            android:scaleType="fitXY"
+            tools:srcCompat="@tools:sample/avatars" />
 
     </androidx.cardview.widget.CardView>
+
 
 </RelativeLayout>

@@ -20,7 +20,6 @@
             android:layout_marginTop="5dp" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,6 +28,8 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="5dp"
+        android:background="@color/twitter_blue"
+        android:textColor="@android:color/white"
         android:onClick="onLogoutButton"
         android:text="@string/logout_label" />
 </RelativeLayout>

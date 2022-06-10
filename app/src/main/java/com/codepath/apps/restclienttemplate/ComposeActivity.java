@@ -25,6 +25,7 @@ public class ComposeActivity extends AppCompatActivity {
 
     EditText etCompose;
     Button btnTweet;
+    Button btnReply; //HERE
 
     TwitterClient client;
 
@@ -37,6 +38,8 @@ public class ComposeActivity extends AppCompatActivity {
 
         etCompose = findViewById(R.id.etCompose);
         btnTweet = findViewById(R.id.btnTweet);
+
+        // btnReply = findViewById(R.id.btnReply); //HERE
 
         // Set click listener on button
         btnTweet.setOnClickListener(new View.OnClickListener() {
@@ -53,6 +56,7 @@ public class ComposeActivity extends AppCompatActivity {
                 }
                 Toast.makeText(ComposeActivity.this, "tweetContent", Toast.LENGTH_LONG).show();
                 // Make an API call to Twitter to publish the tweet
+                // String tweetContent = "replying to" + [USERNAME].toString() + tweetContent; //THIS
                 client.publishTweet(tweetContent, new JsonHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Headers headers, JSON json) {
@@ -61,7 +65,8 @@ public class ComposeActivity extends AppCompatActivity {
                             Tweet tweet = Tweet.fromJson(json.jsonObject);
                             Log.i(TAG, "Published tweet says:" + tweet);
                             Intent intent = new Intent();
-                            intent.putExtra("tweet", Parcels.wrap(tweet));                            setResult(RESULT_OK, intent);
+                            intent.putExtra("tweet", Parcels.wrap(tweet));
+                            setResult(RESULT_OK, intent);
                             finish();
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -76,5 +81,45 @@ public class ComposeActivity extends AppCompatActivity {
 
             }
         });
+//        // Set click listener on button
+//        btnReply.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                // String tweetContent = "replying to @" + [USER OF TWEET CLICKED ON] + etCompose.getText().toString();
+//                String tweetContent = etCompose.getText().toString();
+//                if (tweetContent.isEmpty()) {
+//                    Toast.makeText(ComposeActivity.this, "Sorry, your tweet cannot be empty", Toast.LENGTH_LONG).show();
+//                    return;
+//                }
+//                if (tweetContent.length() > MAX_TWEET_LENGTH) {
+//                    Toast.makeText(ComposeActivity.this, "Sorry, your tweet is too long", Toast.LENGTH_LONG).show();
+//                    return;
+//                }
+//                Toast.makeText(ComposeActivity.this, "tweetContent", Toast.LENGTH_LONG).show();
+//                // Make an API call to Twitter to publish the tweet
+//                // String tweetContent = "replying to" + [USERNAME].toString() + tweetContent; //THIS
+//                client.publishTweet(tweetContent, new JsonHttpResponseHandler() {
+//                    @Override
+//                    public void onSuccess(int statusCode, Headers headers, JSON json) {
+//                        Log.i(TAG, "onSuccess to publish tweet");
+//                        try {
+//                            Tweet tweet = Tweet.fromJson(json.jsonObject);
+//                            Log.i(TAG, "Published tweet says:" + tweet);
+//                            Intent intent = new Intent();
+//                            intent.putExtra("tweet", Parcels.wrap(tweet));
+//                            setResult(RESULT_OK, intent);
+//                            finish();
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
+//                        Log.e(TAG, "onFailure to publish tweet", throwable);
+//                    }
+//                });
+//
+//            }
+//        });
     }
 }
