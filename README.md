@@ -48,7 +48,9 @@ The following **additional** features are implemented:
 Here's a walkthrough of implemented user stories:
 
 <img src='https://submissions.us-east-1.linodeobjects.com/metau_android/G6qIyLMy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-![Twitter walkthrough gif]('https://submissions.us-east-1.linodeobjects.com/metau_android/G6qIyLMy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough')
+
+https://www.dropbox.com/s/h36hzecu8x3hecr/twitter.gif?dl=0 - Dropbox may not display the gif properly
+https://www.dropbox.com/s/zsr9eipzvsj5yls/twitter.webm?dl=0 - A video walkthrough, should display properly on Dropbox
 
 GIF created with [Kap](https://getkap.co/).
 
